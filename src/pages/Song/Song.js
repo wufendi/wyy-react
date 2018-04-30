@@ -2,13 +2,14 @@
 import React, {Component} from 'react';
 import {musicUrl,songDetail} from 'api/allApisList';
 import './style.scss';
+import defaultImg from './imgs/zly.jpg';
 
 export default class Song extends Component {
     constructor(props) {
         super(props);
         this.id = this.props.location.query?this.props.location.query.id : '';
         this.state = {
-            backgroundImg: '',
+            backgroundImg: defaultImg,
             musicUrl: 'http://m10.music.126.net/20180429154449/51d0e1869a06bad918c1842f89312934/ymusic/2ba4/2130/8a71/574a2be2df717b2b1b0a57273fd3f873.mp3',
         };
         this.getMusicUrl = () => {
@@ -49,12 +50,26 @@ export default class Song extends Component {
 
         return (
             <div className='page'>
-                <div className="background-img" style={{backgroundImage:`url(${backgroundImg})`}}></div>
-                {
-                    this.id ?  <audio controls="controls" autoPlay="autoplay" src={this.state.musicUrl}/> : '页面不存在✌️'
-                }
+                <div className="background-img" style={{backgroundImage:`url(${backgroundImg})`}}>
+                    <ul>
+                        <li>ighghh</li>
+                        <li>ighghh</li>
+                        <li>ighghh</li>
+                        <li>ighghh</li>
+                        <li>2222</li>
+                        <li>ighghh</li>
+                        <li>ighghh</li>
+                        <li>ighghh</li>
+                        <li>ighghh</li>
+                        <li>ighghh</li>
+                    </ul>
+                </div>
+                {/*{*/}
+                    {/*this.id ?  <audio controls="controls" autoPlay="autoplay" src={this.state.musicUrl}/> : '页面不存在✌️'*/}
+                {/*}*/}
 
             </div>
+
         )
     }
 }

@@ -26,7 +26,7 @@ const createComponent = (component) => (props) => (
 );
 
 const getRouter = () => (
-        <div>
+
             <Switch>
                 <Route exact path="/" component={createComponent(Home)}/>
                 <Route exact path="/page1" component={createComponent(Page1)}/>
@@ -38,7 +38,6 @@ const getRouter = () => (
                 <Route exact path="/artist" component={createComponent(Artist)}/>
                 <Route exact path="/mv" component={createComponent(Mv)}/>
             </Switch>
-        </div>
 );
 
 export default getRouter;

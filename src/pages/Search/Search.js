@@ -8,6 +8,7 @@ export default class Search extends Component {
         super(props);
         this.state = {
             hasClickDetail: false,
+            currentPage: 1,
             searchKeyword:'', // 搜索关键词
             hotSearch:[], // 热门搜索
             searchData: [], // 搜索结果
@@ -38,7 +39,7 @@ export default class Search extends Component {
                 }
             })
         };
-        this.getSearchSuggest = (keyword) => { // 获取搜索结果
+        this.getSearchSuggest = (keyword, page) => { // 获取搜索结果
             let historyData = this.state.historyData
             if (!this.state.historyData.includes(keyword)) {
                 historyData.unshift(keyword);
@@ -59,19 +60,24 @@ export default class Search extends Component {
                     historyData: historyData
                 });
             }
-            searchSuggest(keyword).then(response => {
+            searchSuggest(keyword, page).then(response => {
                 const resultData = response.data;
                 if (resultData.code === 200) {
-                    console.log(resultData)
-                    this.setState(...this.state,{
-                        searchSuggestData: resultData.result
-                    });
+                    if (page === 1) {
+                        this.setState(...this.state,{
+                            searchSuggestData: resultData.result
+                        });
+                    } else {
+
+                    }
                 } else {
 
                 }
             });
             this.setState(...this.state, {
-                hasClickDetail: true
+                hasClickDetail: true,
+                searchKeyword: keyword,
+                currentPage: page
             });
         };
         this.doSearch = (event) => { // 关键词改变时
@@ -101,9 +107,17 @@ export default class Search extends Component {
                 pathname: `/${type}`,
                 query: {id: id},
             });
+        };
+        this.doScroll = () => {
+            if (this.state.hasClickDetail) {
+                const page = this.state.currentPage + 1;
+                this.getSearchSuggest(this.state.searchKeyword,page);
+            }
+
         }
     }
     componentDidMount() {
+    //  this.refs.test.addEventListener('scroll', this.doScroll, false);
         this.getHotSearch();
     }
     render() {
@@ -116,8 +130,8 @@ export default class Search extends Component {
         const showSection = () => {
             if (hasClickDetail) { // 搜索结果
                 return (
-                    <div className="content">
-                        <section className="match-section">
+                    <div className="content" >
+                        <section className="match-section" ref="test">
                             <ul className="list">
                                 {
                                     searchSuggestData.albums? searchSuggestData.albums.map((item, i) => {
@@ -135,7 +149,7 @@ export default class Search extends Component {
                                         return (
                                             <li className="item img-item" key={i} onClick={() => this.doDetail('artist',item.id)}>
                                                 <img src={item.img1v1Url} alt=""/>
-                                                <span>歌手：{item.name}  <i className="iconfont icon-arrow-r"/></span>
+                                                <div>歌手：{item.name}  <i className="iconfont icon-arrow-r"/></div>
                                             </li>
                                         )
                                     }): ''
@@ -158,7 +172,7 @@ export default class Search extends Component {
                                             <p className="song-des">
                                                 {
                                                     item.artists? item.artists.map((subItem, j) => {
-                                                        const blueTextName = item.name === subItem.name ? 'blue-text' : '';
+                                                        const blueTextName = searchKeyword === subItem.name ? 'blue-text' : '';
                                                         let feeIcon = '';
                                                         if (j === 0 && item.fee !== 0) {
                                                             feeIcon = <i className="iconfont icon-vip"/>;
@@ -188,25 +202,23 @@ export default class Search extends Component {
                 )
             } else if (searchKeyword === "") { // 热门搜索和历史搜素记录
                 return (
-                    <div className="content">
-                        <section className="hot-search">
+                    <div className="content" >
+                        <section className="hot-search" ref="test">
                             <h3>
                                 热门搜索
                             </h3>
                             <ul className="list">
                                 {hotSearchData.map((item, i) => {
                                     return (
-                                        <li className="hot-item" key={i} onClick={() => this.getSearchSuggest(item.name)}>{item.name}</li>
+                                        <li className="hot-item" key={i} onClick={() => this.getSearchSuggest(item.name,1)}>{item.name}</li>
                                     )
                                 })}
                             </ul>
-                        </section>
-                        <section className="search-history">
-                            <ul className="list">
+                            <ul className="history-list">
                                 {historyData.map((item, i) => {
-                                    return (<li className="item" key={i} onClick={() => this.getSearchSuggest(item)}>
+                                    return (<li className="item" key={i} onClick={() => this.getSearchSuggest(item,1)}>
                                         <i className="iconfont icon-record" />
-                                        <span>{item}<i className="iconfont icon-cancel"/></span>
+                                        <div className="history-div">{item}<i className="iconfont icon-cancel"/></div>
                                     </li>)
                                 })}
                             </ul>
@@ -215,17 +227,17 @@ export default class Search extends Component {
                 )
             } else if (searchKeyword) { // 正在搜索
                 return (
-                    <div className="content">
-                        <section className="search-result-list">
-                            <h3 className="title" onClick={() => this.getSearchSuggest(searchKeyword)}>
+                    <div className="content" >
+                        <section className="search-result-list" ref="test">
+                            <h3 className="title" onClick={() => this.getSearchSuggest(searchKeyword,1)}>
                                搜索 {searchKeyword ? `"${searchKeyword}"` : ''}
                             </h3>
                             <ul className="list">
                                 {searchData.map((item, i) => {
                                     return (
-                                        <li className="item" key={i} onClick={() => this.getSearchSuggest(item.name)}>
+                                        <li className="item" key={i} onClick={() => this.getSearchSuggest(item.name,1)}>
                                             <i className="iconfont icon-search"/>
-                                            <span>{item.name}</span>
+                                            <div className="search-div">{item.name}</div>
                                         </li>
                                     )
                                 })}

@@ -1,8 +1,5 @@
 @import "styles/varible.scss";
 .page{
-  height:100%;
-  width: 100%;
-  background-color: #fcfcfd;
   .iconfont{
     font-size: 22px;
     color:rgba(0,0,0,.1);
@@ -33,17 +30,21 @@
     }
   }
   .content{
+    height: calc(100% - 60px);
+    overflow: hidden;
     section{
+      height: 100%;
+      overflow-y: auto;
       &.hot-search{
-        padding: 15px 10px 0;
         h3{
-          padding: 0;
+          padding: 15px 10px 0 10px;
           border-bottom: none;
           font-size: 12px;
           line-height: 12px;
           color: #666;
         }
         .list{
+          padding: 0 10px;
           margin: 10px 0 7px;
         }
       }
@@ -56,8 +57,7 @@
         color: #507daf;
         border-bottom: 1px solid $border_color;
       }
-
-      .list{
+      .list,.history-list{
         .hot-item{ // 热门搜索
           display: inline-block;
           height: 32px;
@@ -75,6 +75,7 @@
           align-items: center;
           height: 45px;
           font-size: 15px;
+          position: relative;
           &.img-item{
             height:66px;
           }
@@ -95,13 +96,14 @@
           .iconfont{
             margin: 0 10px;
             font-size: 18px;
+            color: #ccc;
           }
           .icon-cancel,.icon-arrow-r,.icon-start{
             position: absolute;
             right: 0;
           }
           .icon-vip{
-            margin: 0 10px 0 0;
+            margin: 0 5px 0 0;
             font-size: 12px;
             color:palevioletred;
           }
@@ -111,7 +113,7 @@
             margin-right: 15px;
             line-height: 0;
           }
-          span{
+          .history-div,.search-div{
             line-height: 45px;
             flex: 2;
             border-bottom: 1px solid $border_color;
@@ -119,6 +121,7 @@
             text-overflow: ellipsis;
             white-space: nowrap;
             word-break: normal;
+            padding-right: 10px;
           }
         }
 
@@ -129,6 +132,14 @@
           padding-left: 10px;
           .item{
             border-bottom: 1px solid $border_color;
+            div{
+              flex: 2;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              word-break: normal;
+              padding-right: 25px;
+            }
             span{
               border-bottom: none;
             }
