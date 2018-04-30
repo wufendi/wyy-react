@@ -1,12 +1,14 @@
 // 具体歌曲页面
 import React, {Component} from 'react';
-import {musicUrl} from 'api/allApisList';
+import {musicUrl,songDetail} from 'api/allApisList';
+import './style.scss';
 
 export default class Song extends Component {
     constructor(props) {
         super(props);
-        this.id = this.props.location.query.id;
+        this.id = this.props.location.query?this.props.location.query.id : '';
         this.state = {
+            backgroundImg: '',
             musicUrl: 'http://m10.music.126.net/20180429154449/51d0e1869a06bad918c1842f89312934/ymusic/2ba4/2130/8a71/574a2be2df717b2b1b0a57273fd3f873.mp3',
         };
         this.getMusicUrl = () => {
@@ -19,17 +21,39 @@ export default class Song extends Component {
                 } else {
 
                 }
-            })
+            });
+        }
+        this.getSongDetail = () => {
+            songDetail(this.id).then(response => {
+                const resultData = response.data;
+                if (resultData.code === 200) {
+                    this.setState(...this.state,{
+                        backgroundImg: resultData.songs[0].al.picUrl
+                    });
+                    console.log(this.state);
+                    debugger
+                } else {
+
+                }
+            });
         }
     }
     componentDidMount() {
-        this.getMusicUrl();
+        if (this.id) {
+            this.getMusicUrl();
+            this.getSongDetail()
+        }
     }
     render() {
-        return (
-            <div> Hello, Song
+        const backgroundImg = this.state.backgroundImg;
 
-                <audio controls="controls" autoPlay="autoplay" src={this.state.musicUrl}/>
+        return (
+            <div className='page'>
+                <div className="background-img" style={{backgroundImage:`url(${backgroundImg})`}}></div>
+                {
+                    this.id ?  <audio controls="controls" autoPlay="autoplay" src={this.state.musicUrl}/> : '页面不存在✌️'
+                }
+
             </div>
         )
     }

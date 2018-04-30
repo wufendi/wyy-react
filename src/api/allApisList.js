@@ -36,6 +36,17 @@ export function musicUrl (id=33894312 ) {
         method: 'get'
     })
 }
+/**
+ * 获取歌曲详情
+ * 说明：调用此接口 , 传入音乐 id, 可获得歌曲详情
+ * @param ids - 必选参数  音乐ids
+ */
+export function songDetail (ids=347230 ) {
+    return fetch({
+        url: `${pref}/song/detail?ids=${ids}`,
+        method: 'get'
+    })
+}
 
 /**
  * 搜索
