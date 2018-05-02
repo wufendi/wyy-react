@@ -1,4 +1,5 @@
 @import "styles/varible.scss";
+@import "styles/animation.scss";
 .page{
   position: relative;
   .background-img{
@@ -6,10 +7,41 @@
     height: 100%;
     background: no-repeat center center;
     background-size: contain;
-    ul{
+    .content{
       width:100%;
       height: 100%;
       background-color: rgba(0,0,0,.5);
+      .img-content{
+        height: 80%;
+        text-align: center;
+        position: relative;
+        .needle-img{
+          margin: auto;
+          height:160px;
+          top: 0;
+          left: 50%;
+          position: absolute;
+        }
+        .disc-img{
+          padding-top: 60px;
+          width:320px;
+          margin: auto;
+        }
+        .song-img{
+          width:200px;
+          height: 200px;
+          border-radius: 50%;
+          margin: auto;
+          position: absolute;
+          top:120px;
+          left: calc(50% - 100px);
+          animation:transform 20s infinite linear;
+        }
+        .transition{
+          transition:all 1s;
+        }
+      }
+
     }
 
   }

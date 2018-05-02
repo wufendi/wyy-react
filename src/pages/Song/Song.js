@@ -3,6 +3,8 @@ import React, {Component} from 'react';
 import {musicUrl,songDetail} from 'api/allApisList';
 import './style.scss';
 import defaultImg from './imgs/zly.jpg';
+import disc from './imgs/disc.png';
+import needle from './imgs/needle.png';
 const defaultMp3 = require("file-loader!./mp3/xsdy.mp3");
 export default class Song extends Component {
     constructor(props) {
@@ -51,24 +53,16 @@ export default class Song extends Component {
         return (
             <div className='page'>
                 <div className="background-img" style={{backgroundImage:`url(${backgroundImg})`}}>
-                    <ul>
-                        <li>ighghh</li>
-                        <li>ighghh</li>
-                        <li>ighghh</li>
-                        <li>ighghh</li>
-                        <li>2222</li>
-                        <li>ighghh</li>
-                        <li>ighghh</li>
-                        <li>ighghh</li>
-                        <li>ighghh</li>
-                        <li>ighghh</li>
-                    </ul>
+                  <div className="content">
+                      <div className="img-content">
+                          <img src={needle} className="needle-img" alt="needle"/>
+                          <img src={defaultImg} className="song-img" alt=""/>
+                          <img src={disc} className="disc-img" alt="disc"/>
+                      </div>
+
+                  </div>
                     <audio controls="controls" autoPlay="autoplay" src={this.state.musicUrl}/>
                 </div>
-                {/*{*/}
-                    {/*this.id ?  <audio controls="controls" autoPlay="autoplay" src={this.state.musicUrl}/> : '页面不存在✌️'*/}
-                {/*}*/}
-
             </div>
 
         )
