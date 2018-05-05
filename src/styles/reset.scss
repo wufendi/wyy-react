@@ -7,12 +7,13 @@ html,body,ul,li,ol,dl,dd,dt,p,h1,h2,h3,h4,h5,h6,form,fieldset,legend,img {
   box-sizing: border-box;
 }
 html,body{
-  font-size:12px;
+  font-size:14px;
   background:#fff;
   -webkit-text-size-adjust:100%;
   height: 100%;
   width:100%;
   overflow: hidden;
+  font-family: Helvetica, sans-serif;
 }
 #app, .pages{
   height:100%;
@@ -20,12 +21,12 @@ html,body{
 }
 .pages{
   padding-top: 104px;
-  .page{
-    height:100%;
-    width: 100%;
-    overflow: hidden;
-    background-color: #fcfcfd;
-  }
+}
+.page{
+  height:100%;
+  width: 100%;
+  overflow: hidden;
+  background-color: #fcfcfd;
 }
 fieldset,img {
   border: 0
@@ -44,7 +45,7 @@ input {
   padding-top: 0;
   padding-bottom: 0;
   border: none;
-  font-family: "SimSun","宋体"
+  font-family: Helvetica, sans-serif;
 }
 input::-moz-focus-inner {
   border: 0;

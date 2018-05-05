@@ -90,3 +90,39 @@ export function topArtists (limit = 10, offset = 0) {
         method: 'get'
     })
 }
+
+/**
+ * 获取专辑内容
+ * 说明 : 调用此接口 , 传入专辑 id, 可获得专辑内容
+ * @param id: 必选参数 专辑 id
+ */
+export function getAlbum (id=32311) {
+    return fetch({
+        url: `${pref}/album?id=${id}`,
+        method: 'get'
+    })
+}
+/**
+ * 专辑评论
+ * 说明 : 调用此接口 , 传入音乐 id 和 limit 参数 , 可获得该专辑的所有评论 ( 不需要 登录 )
+ * @param id: 必选参数 专辑 id
+ * @param limit - 可选参数 返回数量 , 默认为 30
+ * @param offset -可选参数  偏移数量，用于分页 ,如 :( 页数 -1)*30, 其中 30 为 limit 的值 , 默认为 0
+ */
+export function getCommentAlbum (id=32311, offset = 0, limit = 20) {
+    return fetch({
+        url: `${pref}/comment/album?id=${id}&limit=${limit}&offset=${offset}`,
+        method: 'get'
+    })
+}
+/**
+ * 获取歌手单曲
+ * 说明 : 调用此接口 , 传入歌手 id, 可获得歌手部分信息和热门歌曲
+ * @param id: 必选参数 歌手 id, 可由搜索接口获得
+ */
+export function getArtistsSong (id=6452) {
+    return fetch({
+        url: `${pref}/artists?id=${id}`,
+        method: 'get'
+    })
+}

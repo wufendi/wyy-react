@@ -1,7 +1,16 @@
 // 搜索页面
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import {topArtists, search, searchSuggest} from 'api/allApisList';
+import {setHistoryData} from 'actions/search';
 import './style.scss';
+
+@connect(
+    (state, props) => ({ historyData: state.search.historyData}),
+    dispatch => ({
+        setHistoryData: (data) => dispatch(setHistoryData(data)),
+    }),
+)
 
 export default class Search extends Component {
     constructor(props){
@@ -12,8 +21,7 @@ export default class Search extends Component {
             searchKeyword:'', // 搜索关键词
             hotSearch:[], // 热门搜索
             searchData: [], // 搜索结果
-            searchSuggestData: {}, // 搜索建议结果
-            historyData: [] // 历史搜索记录 最多10条
+            searchSuggestData: {} // 搜索建议结果
         };
         this.getHotSearch = () => { // 获取热门搜索
             topArtists().then(response => {
@@ -40,25 +48,19 @@ export default class Search extends Component {
             })
         };
         this.getSearchSuggest = (keyword, page) => { // 获取搜索结果
-            let historyData = this.state.historyData
-            if (!this.state.historyData.includes(keyword)) {
+            let historyData = this.props.historyData
+            if (!this.props.historyData.includes(keyword)) {
                 historyData.unshift(keyword);
-                if (this.state.historyData.length < 10) {
-                    this.setState(...this.state,{
-                        historyData: historyData
-                    });
+                if (this.props.historyData.length < 10) {
+                    this.props.setHistoryData(historyData);
                 } else {
                     historyData.pop();
-                    this.setState(...this.state,{
-                        historyData: historyData
-                    });
+                    this.props.setHistoryData(historyData);
                 }
             } else {
                 historyData.splice(historyData.indexOf(keyword),1);
                 historyData.unshift(keyword);
-                this.setState(...this.state,{
-                    historyData: historyData
-                });
+                this.props.setHistoryData(historyData);
             }
             searchSuggest(keyword, page).then(response => {
                 const resultData = response.data;
@@ -125,7 +127,7 @@ export default class Search extends Component {
         const hotSearchData = this.state.hotSearch;
         const searchSuggestData = this.state.searchSuggestData;
         const searchData = this.state.searchData;
-        const historyData = this.state.historyData;
+        const historyData = this.props.historyData;
         const hasClickDetail = this.state.hasClickDetail;
         const showSection = () => {
             if (hasClickDetail) { // 搜索结果
