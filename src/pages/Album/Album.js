@@ -1,23 +1,12 @@
 import React, {Component} from 'react';
+import Comment from 'components/Comment/Comment';
 import {getAlbum, getCommentAlbum} from 'api/allApisList';
+import {getQueryString, timeFormat}  from 'utils/commonFn';
 import './style.scss';
-function timeFormat(data,type) {
-    const date = new Date(data);
-    const year = date.getFullYear();
-    let month = date.getMonth() + 1;
-    let day = date.getDate();
-    month = month < 10 ? `0${month}` : month;
-    day = day < 10 ? `0${day}` : day;
-    if (type) {
-        return `${year}年${month}月${day}日`;
-    }
-    return `${year}-${month}-${day}`;
-}
-
 export default class Album extends Component {
     constructor(props){
         super(props)
-        this.id = this.props.location.query?this.props.location.query.id : '';
+        this.id = this.props.location.query?this.props.location.query.id : getQueryString('id');
         this.state = {
             blurPicUrl: '',
             picUrl: '',
@@ -38,7 +27,7 @@ export default class Album extends Component {
             this.setState(...this.state,{
                 introShowAll: !this.state.introShowAll
             })
-        }
+        };
         this.getAlbum = () => {
             getAlbum(this.id).then(response => {
                 const resultData = response.data;
@@ -59,7 +48,7 @@ export default class Album extends Component {
 
                 }
             });
-        }
+        };
         this.getCommentAlbum = (page) => {
             getCommentAlbum(this.id,page).then(response => {
                 const resultData = response.data;
@@ -84,15 +73,9 @@ export default class Album extends Component {
                 }
             });
         };
-        this.doDetail = (type,id) => {
-            this.props.history.push({
-                pathname: `/${type}`,
-                query: {id: id},
-            });
-        };
         this.doMoreComments = () => {
             this.getCommentAlbum(this.state.commentsPage+1)
-        }
+        };
     }
     componentDidMount() {
         if (this.id) {
@@ -114,7 +97,7 @@ export default class Album extends Component {
         const comments = this.state.comments;
         const commentMore = this.state.commentMore;
         return (
-            <div className="page">
+            <div className="page album">
                 <section className="top">
                     <div className="bg" style={{backgroundImage:`url(${blurPicUrl})`}}/>
                     <div className="wrap">
@@ -127,7 +110,7 @@ export default class Album extends Component {
                             <h2 className="fr-title">{albumName}</h2>
                             <div className="fr-singer">
                                 歌手：
-                                <span className="fr-singer-name" onClick={() => this.doDetail('artist',singerId)}> <a href="javascript:;">{singerName}</a></span>
+                                <span className="fr-singer-name"> <a href={`/artist?id=${singerId}`}>{singerName}</a></span>
                             </div>
                             <div className="fr-time">
                                 发行时间：<span>{publishTime}</span>
@@ -150,7 +133,7 @@ export default class Album extends Component {
                     {
                         songs.length > 0? songs.map((item,index) => {
                             return (
-                                <li key={index} onClick={() => this.doDetail('song',item.id)}>
+                                <li key={index}>
                                     <div className="li-num">{index+1}</div>
                                     <div className="li-wrap">
                                         <div className="fl">
@@ -163,106 +146,13 @@ export default class Album extends Component {
                                             <i className="iconfont icon-start"/>
                                         </div>
                                     </div>
+                                    <a href={`/song?id=${item.id}`} className="hidden-a"/>
                                 </li>
                             )
                         }):''
                     }
                 </ul>
-                {
-                    hotComments.length > 0 ? (<div className="hot-comments">
-                        <div className="title">
-                            热门评论
-                        </div>
-                        <ul className="comment-list">
-                            {
-                                hotComments.map((item, index) => {
-                                    return (
-                                        <li key={index}>
-                                            <div className="cmt-head">
-                                                <a className="photo" href="#">
-                                                    <img src= {item.user.avatarUrl} alt=""/></a>
-                                            </div>
-                                            <div className="cmt-wrap">
-                                                <div className="cmt-header">
-                                                    <div className="cmt-meta">
-                                                        <div className="cmt-user">
-                                                            <a href="#">{item.user.nickname}</a>
-                                                        </div>
-                                                        <div className="cmt-time">
-                                                            {timeFormat(item.time, true)}
-                                                        </div>
-                                                    </div>
-                                                    <div className="cmt-like">
-                                                        <div className="cmt-likearea">
-                                                            {item.likedCount} <i className="iconfont icon-good"/>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="cmt-content">
-                                <span className="xmt-text">
-                                    {item.content}
-                                </span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    )
-                                })
-                            }
-                        </ul>
-                    </div>) : ''
-                }
-                {
-                    comments.length > 0 ? (
-                        <div className="comments">
-                            <div className="title">
-                                精彩评论
-                            </div>
-                            <ul className="comment-list">
-                                {
-                                    comments.map((item, index) => {
-                                        return (
-                                            <li key={index}>
-                                                <div className="cmt-head">
-                                                    <a className="photo" href="#">
-                                                        <img src= {item.user.avatarUrl} alt=""/></a>
-                                                </div>
-                                                <div className="cmt-wrap">
-                                                    <div className="cmt-header">
-                                                        <div className="cmt-meta">
-                                                            <div className="cmt-user">
-                                                                <a href="#">{item.user.nickname}</a>
-                                                            </div>
-                                                            <div className="cmt-time">
-                                                                {timeFormat(item.time, true)}
-                                                            </div>
-                                                        </div>
-                                                        <div className="cmt-like">
-                                                            <div className="cmt-likearea">
-                                                                {item.likedCount} <i className="iconfont icon-good"/>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="cmt-content">
-                                <span className="xmt-text">
-                                    {item.content}
-                                </span>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        )
-                                    })
-                                }
-                            </ul>
-                        </div>
-                    ) : ''
-                }
-                {
-                    commentMore ?  (<div className="comment-more">
-                    <span className="box" onClick={this.doMoreComments}>
-                        查看全部 {commentCount} 条评论 <i className="iconfont icon-arrow-r"/>
-                    </span>
-                    </div>) : ''
-                }
+                <Comment commentCount={commentCount} hotComments={hotComments} comments={comments} commentMore={commentMore} doMoreComments={this.doMoreComments}/>
             </div>
         )
     }

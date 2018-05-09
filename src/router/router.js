@@ -12,6 +12,8 @@ import Song from 'bundle-loader?lazy&name=song!pages/Song/Song';
 import Album from 'bundle-loader?lazy&name=album!pages/Album/Album';
 import Artist from 'bundle-loader?lazy&name=artist!pages/Artist/Artist';
 import Mv from 'bundle-loader?lazy&name=mv!pages/Mv/Mv';
+import User from 'bundle-loader?lazy&name=user!pages/User/User';
+import Playlist from "bundle-loader?lazy&name=playlist!pages/Playlist/Playlist";
 
 const Loading = function () {
     return <div>Loading...</div>
@@ -36,7 +38,9 @@ const getRouter = () => (
                 <Route exact path="/song" component={createComponent(Song)}/>
                 <Route exact path="/album" component={createComponent(Album)}/>
                 <Route exact path="/artist" component={createComponent(Artist)}/>
+                <Route exact path="/user" component={createComponent(User)}/>
                 <Route exact path="/mv" component={createComponent(Mv)}/>
+                <Route exact path="/playlist" component={createComponent(Playlist)}/>
             </Switch>
 );
 

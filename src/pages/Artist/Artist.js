@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import {getArtistsSong} from 'api/allApisList';
+import {getQueryString}  from 'utils/commonFn';
 import './style.scss';
 export default class Artist extends Component {
     constructor(props){
         super(props)
-        this.id = this.props.location.query?this.props.location.query.id : '';
+        this.id = this.props.location.query?this.props.location.query.id : getQueryString('id');
         this.state = {
             img1v1Url: '',
             picUrl: '',
@@ -17,7 +18,7 @@ export default class Artist extends Component {
             this.setState(...this.state,{
                 introShowAll: !this.state.introShowAll
             })
-        }
+        };
         this.getArtistsSong = () => {
             getArtistsSong(this.id).then(response => {
                 const resultData = response.data;
@@ -33,12 +34,6 @@ export default class Artist extends Component {
 
                 }
             });
-        }
-        this.doDetail = (type,id) => {
-            this.props.history.push({
-                pathname: `/${type}`,
-                query: {id: id},
-            });
         };
     }
     componentDidMount() {
@@ -52,7 +47,7 @@ export default class Artist extends Component {
         const description = this.state.description;
         const hotSongs = this.state.hotSongs;
         return (
-            <div className="page">
+            <div className="page artist">
                 <section className="top">
                     <img className="bg" src={picUrl}/>
                     <p className="singer-name">{singerName}</p>
@@ -72,7 +67,7 @@ export default class Artist extends Component {
                     {
                         hotSongs.length > 0? hotSongs.map((item,index) => {
                             return (
-                                <li key={index} onClick={() => this.doDetail('song',item.id)}>
+                                <li key={index}>
                                     <div className="li-num">{index+1}</div>
                                     <div className="li-wrap">
                                         <div className="fl">
@@ -85,6 +80,7 @@ export default class Artist extends Component {
                                             <i className="iconfont icon-start"/>
                                         </div>
                                     </div>
+                                    <a href={`/song?id=${item.id}`} className="hidden-a"/>
                                 </li>
                             )
                         }):''

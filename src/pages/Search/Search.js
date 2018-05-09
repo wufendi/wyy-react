@@ -104,12 +104,6 @@ export default class Search extends Component {
                 hasClickDetail: false
             })
         };
-        this.doDetail = (type,id) => {
-            this.props.history.push({
-                pathname: `/${type}`,
-                query: {id: id},
-            });
-        };
         this.doScroll = () => {
             if (this.state.hasClickDetail) {
                 const page = this.state.currentPage + 1;
@@ -138,10 +132,11 @@ export default class Search extends Component {
                                 {
                                     searchSuggestData.albums? searchSuggestData.albums.map((item, i) => {
                                         return (
-                                            <li className="item img-item" key={i} onClick={() => this.doDetail('album', item.id)}>
+                                            <li className="item img-item" key={i}>
                                                 <img src={item.artist.img1v1Url} alt=""/>
                                                 <div>专辑：{item.name}<p className="desc">{item.artist.name}</p></div>
                                               <i className="iconfont icon-arrow-r"/>
+                                              <a href={`/album?id=${item.id}`} className="hidden-a"/>
                                             </li>
                                         )
                                     }): ''
@@ -149,9 +144,10 @@ export default class Search extends Component {
                                 {
                                     searchSuggestData.artists? searchSuggestData.artists.map((item, i) => {
                                         return (
-                                            <li className="item img-item" key={i} onClick={() => this.doDetail('artist',item.id)}>
+                                            <li className="item img-item" key={i}>
                                                 <img src={item.img1v1Url} alt=""/>
                                                 <div>歌手：{item.name}  <i className="iconfont icon-arrow-r"/></div>
+                                                <a href={`/artist?id=${item.id}`} className="hidden-a"/>
                                             </li>
                                         )
                                     }): ''
@@ -159,17 +155,32 @@ export default class Search extends Component {
                                 {
                                     searchSuggestData.mvs? searchSuggestData.mvs.map((item, i) => {
                                         return (
-                                            <li className="item img-item" key={i} onClick={() => this.doDetail('mv',item.id)}>
+                                            <li className="item img-item" key={i}>
                                                 <img src={item.cover} alt=""/>
                                                 <div>MV：{item.name}<p className="desc">{item.artistName}</p></div>
                                                 <i className="iconfont icon-arrow-r"/>
+                                                <a href={`/mv?id=${item.id}`} className="hidden-a"/>
+                                            </li>
+                                        )
+                                    }): ''
+                                }
+                                {
+                                    searchSuggestData.playlists? searchSuggestData.playlists.map((item, i) => {
+                                        return (
+                                            <li className="item img-item" key={i}>
+                                                <img src={item.coverImgUrl}/>
+                                                <div>歌单：{item.name}<p className="desc">
+                                                    {item.trackCount} 首 by ，播放{item.playCount}</p>
+                                                </div>
+                                                <i className="iconfont icon-arrow-r"/>
+                                                <a href={`/playlist?id=${item.id}`} className="hidden-a"/>
                                             </li>
                                         )
                                     }): ''
                                 }
                                 {searchSuggestData.songs? searchSuggestData.songs.map((item, i) => {
                                     return (
-                                        <li className="item" key={i} onClick={() => this.doDetail('song',item.id)}>
+                                        <li className="item" key={i}>
                                             <div>{item.name}
                                             <p className="song-des">
                                                 {
@@ -195,6 +206,7 @@ export default class Search extends Component {
                                             </p>
                                             </div>
                                             <i className="iconfont icon-start"/>
+                                            <a href={`/song?id=${item.id}`} className="hidden-a"/>
                                         </li>
                                     )
                                 }): ''}
@@ -250,7 +262,7 @@ export default class Search extends Component {
             }
         }
         return (
-            <div className="page">
+            <div className="page search">
                 <div className="header">
                     <i className="iconfont icon-search"/>
                     <input type="text" placeholder="搜索歌曲、歌手、专辑" onChange={this.doSearch} value={searchKeyword} />

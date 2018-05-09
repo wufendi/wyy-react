@@ -126,3 +126,78 @@ export function getArtistsSong (id=6452) {
         method: 'get'
     })
 }
+
+// mv页面
+
+/**
+ * 获取MV数据
+ * 说明 : 调用此接口 , 传入 mvid ( 在搜索音乐的时候传 type=1004 获得 ) , 可获取对应 MV 数据 , 数据包含 mv 名字 , 歌手 , 发布时间 , mv 视频地址等数据 , 其中 mv 视频 网易做了防盗链处理 , 不能直接播放 , 需要播放的话需要调用 ' 播放 mv' 接口
+ * @param id: 必选参数 mv的id
+ */
+export function getMvData (id=5436712) {
+    return fetch({
+        url: `${pref}/mv?mvid=${id}`,
+        method: 'get'
+    })
+}
+/**
+ * 播放MV
+ * 说明 : 调用此接口 , 传入 mv 地址 , 可播放 mv, 也可将接口嵌入 video 标签使用 , 由 于使用了 'pipe', 进度条无法通过拖动进度条控制进度 , 如有解决方案可提出 PR 或者自 行改造
+ * @param url: 必选参数 mv的id
+ */
+export function getMvUrl (url='/mv/url?url=http://v4.music.126.net/20170422034915/c98eab2f5e2c85fc8de2ab3f0f8ed1c6/web/cloudmusic/MjQ3NDQ3MjUw/89a6a279dc2acfcd068b45ce72b1f560/533e4183a709699d566180ed0cd9abe9.mp4') {
+    return fetch({
+        url: `${pref}/mv?url=${url}`,
+        method: 'get'
+    })
+}
+/**
+ * 相似MV
+ * 说明 : 调用此接口 , 传入 mvid 可获取相似 mv
+ * @param id: 必选参数 mv的id
+ */
+export function getSimiMv (id=5436712) {
+    return fetch({
+        url: `${pref}/simi/mv?mvid=${id}`,
+        method: 'get'
+    })
+}
+/**
+ * MV评论
+ * 说明 : 调用此接口 , 传入音乐 id 和 limit 参数 , 可获得该 mv 的所有评论 ( 不需要 登录 )
+ * @param id: 必选参数 mv id
+ * @param limit - 可选参数 返回数量 , 默认为 30
+ * @param offset -可选参数  偏移数量，用于分页 ,如 :( 页数 -1)*30, 其中 30 为 limit 的值 , 默认为 0
+ */
+export function getCommentMv (id=32311, offset = 0, limit = 20) {
+    return fetch({
+        url: `${pref}/comment/mv?id=${id}&limit=${limit}&offset=${offset}`,
+        method: 'get'
+    })
+}
+
+/// 歌单
+/**
+ * 获取歌单详情
+ * 说明 : 歌单能看到歌单名字 , 但看不到具体歌单内容 , 调用此接口 , 传入歌单 id, 可 以获取对应歌单内的所有的音乐
+ * @param id: 必选参数  歌单 id
+ */
+export function getPlaylistDetail (id=24381616) {
+    return fetch({
+        url: `${pref}/playlist/detail?id=${id}`,
+        method: 'get'
+    })
+}
+/**
+ * 歌单评论
+ * 说明 : 调用此接口 , 传入音乐 id 和 limit 参数 , 可获得该 歌单 的所有评论 ( 不需要 登录 )
+ * @param id: 必选参数 mv id
+ * @param limit - 可选参数 返回数量 , 默认为 30
+ * @param offset -可选参数  偏移数量，用于分页 ,如 :( 页数 -1)*30, 其中 30 为 limit 的值 , 默认为 0
+ */
+export function getCommentPlaylist (id=705123491, offset = 0, limit = 20) {
+    return fetch({
+        url: `${pref}/comment/playlist?id=${id}&limit=${limit}&offset=${offset}`,
+        method: 'get'
+    })
+}

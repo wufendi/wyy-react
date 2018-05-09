@@ -1,0 +1,252 @@
+@import "styles/varible.scss";
+.page.playlist{
+  overflow-y: auto;
+  background: rgb(248, 248, 248);
+  .top{
+    position: relative;
+    padding: 30px 10px 30px 15px;
+    overflow: hidden;
+    .bg{
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: 50%;
+      filter: blur(50px);
+      transform: scale(1.5);
+      background-image: url('//music.163.com/api/img/blur/109951163243389840?param=170y170');
+    }
+    .wrap{
+      display: flex;
+      position: relative;
+      z-index: 2;
+      .fl{
+        position: relative;
+        width: 114px;
+        height: 114px;
+        background-color: #e2e2e3;
+        .fl-img{
+          width: 100%;
+          vertical-align: middle;
+          border: none;
+        }
+        .fl-desc{
+          position: absolute;
+          z-index: 3;
+          top: 10px;
+          left: 0;
+          padding: 0 8px;
+          height: 17px;
+          color: #fff;
+          font-size: 9px;
+          text-align: center;
+          line-height: 17px;
+          background-color: rgba(217,48,48,.8);
+          border-top-right-radius: 17px;
+          border-bottom-right-radius: 17px;
+        }
+        .count{
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 100%;
+          height: 50%;
+          background: linear-gradient(-180deg,rgba(0,0,0,.2) 1%,transparent);
+          line-height: 14px;
+          color: #fff;
+          font-size: 11px;
+          .num{
+            position: absolute;
+            top: 4px;
+            right: 3px;
+            padding-left: 16px;
+            background-size: 12px 9px;
+            background-position: 0 2px;
+            background-repeat: no-repeat;
+            text-shadow: 0 1px 0 rgba(0,0,0,.15);
+          }
+        }
+      }
+      .fr{
+        -webkit-box-flex: 1;
+        margin-left: 26px;
+        color: hsla(0,0%,100%,.5);
+        flex: 1 1 auto;
+        width: 1%;
+        .fr-title{
+          padding-top: 1px;
+          font-size: 17px;
+          line-height: 1.3;
+          color: #fefefe;
+          height: 44px;
+          display: -webkit-box;
+          -webkit-box-pack: center;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+        }
+        .fr-user{
+          display: block;
+          position: relative;
+          margin-top: 20px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          word-break: normal;
+          a{
+            display: inline-block;
+            color: hsla(0,0%,100%,.7);
+            .user-img{
+              display: inline-block;
+              width: 30px;
+              height: 30px;
+              border-radius: 50%;
+              vertical-align: middle;
+              margin-right: 5px;
+              img{
+                border-radius: 50%;
+                width:100%;
+                vertical-align: middle;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .intro{
+    position: relative;
+    margin: 0 10px 0 15px;
+    padding-top: 10px;
+    line-height: 19px;
+    color: #666;
+    >div{
+      position: relative;
+      padding-bottom: 18px;
+      line-height: 19px;
+      color: #666;
+      .wrap{
+        word-wrap: break-word;
+        word-break: break-all;
+        white-space: normal;
+      }
+      .tags{
+        display: inline-block;
+        margin-bottom: 10px;
+        span{
+          display: inline-block;
+          margin-right: 10px;
+          padding: 1px 8px;
+          font-size: 12px;
+          border: 1px solid $border_color;
+          border-radius: 12px;
+        }
+      }
+      .fr-hidden{
+        -webkit-line-clamp: 3;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+      }
+      .icon-arrow-sb,.icon-arrow-st{
+        position: absolute;
+        bottom: 3px;
+        right: 0;
+        z-index: 3;
+        width: 15px;
+        height: 15px;
+        background-position: 50%;
+        background-repeat: no-repeat;
+        background-size: 12px auto;
+      }
+    }
+  }
+  .title{
+    height: 28px;
+    line-height: 28px;
+    padding: 0 10px;
+    font-size: 12px;
+    color: #666;
+    background-color: #eeeff0;
+  }
+  .f-brk {
+    word-wrap: break-word;
+    word-break: break-all;
+    white-space: normal;
+  }
+  .songs-list{
+    li{
+      display: flex;
+      position: relative;
+      .hidden-a{
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+      &:last-of-type{
+        .li-wrap{
+          border-bottom: none;
+        }
+      }
+      .li-num{
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        justify-content: center;
+        width: 40px;
+        font-size: 17px;
+        color: #999;
+      }
+      .li-wrap{
+        display: flex;
+        flex: 1 1 auto;
+        position: relative;
+        border-bottom: 1px solid $border_color;
+        .fl{
+          padding: 6px 0;
+          width: 0;
+          -webkit-box-flex: 1;
+          flex: 1 1 auto;
+          .song-name{
+            font-size: 17px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            word-break: normal;
+          }
+          .song-info{
+            font-size: 12px;
+            color: #888;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            word-break: normal;
+          }
+        }
+        .fr{
+          display: flex;
+          -webkit-box-align: center;
+          align-items: center;
+          padding: 0 10px;
+          .iconfont{
+            margin: 0 10px;
+            font-size: 18px;
+            color: #ccc;
+          }
+        }
+      }
+    }
+  }
+}

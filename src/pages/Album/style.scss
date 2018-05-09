@@ -1,5 +1,5 @@
 @import "styles/varible.scss";
-.page{
+.page.album{
   overflow-y: auto;
   background: rgb(248, 248, 248);
   .top{
@@ -144,6 +144,7 @@
   .songs-list{
     li{
       display: flex;
+      position: relative;
       &:last-of-type{
         .li-wrap{
           border-bottom: none;
@@ -197,122 +198,16 @@
           }
         }
       }
-    }
-  }
-  .hot-comments,.comments{
-    &.hot-comments{
-      .comment-list{
-        li{
-          &:last-of-type{
-            .cmt-wrap{
-              border-bottom:none;
-            }
-          }
-        }
-      }
-    }
-    .comment-list{
-      li{
-        padding-top: 10px;
+      .hidden-a{
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: block;
         width: 100%;
-        display: flex;
-        -webkit-box-orient: horizontal;
-        -webkit-box-direction: normal;
-        flex-direction: row;
-        .cmt-head{
-          height: 35px;
-          margin: 0 10px;
-          -webkit-box-flex: 0;
-          flex: none;
-          .photo{
-            position: relative;
-            display: block;
-            color: #507daf;
-            img{
-              display: block;
-              border-radius: 50%;
-              width: 30px;
-              height: 30px;
-            }
-          }
-        }
-        .cmt-wrap{
-          padding-right: 10px;
-          padding-bottom: 11px;
-          padding-left: 0;
-          -webkit-box-flex: 1;
-          flex: auto;
-          width: 0;
-          position: relative;
-          border-bottom: 1px solid $border_color;
-          .cmt-header{
-            display: flex;
-            -webkit-box-orient: horizontal;
-            -webkit-box-direction: normal;
-            flex-direction: row;
-            .cmt-meta{
-              -webkit-box-flex: 1;
-              flex: auto;
-              width: 0;
-              font-size: 0;
-              .cmt-user{
-                max-width: 100%;
-                display: inline-flex;
-                a{
-                  font-size: 14px;
-                  color: #666;
-                  line-height: 20px;
-                  overflow: hidden;
-                  text-overflow: ellipsis;
-                  white-space: nowrap;
-                  -webkit-box-flex: 1;
-                  flex: auto;
-                }
-              }
-              .cmt-time{
-                font-size: 9px;
-                color: #999;
-              }
-              .cmt-like{
-                width: 65px;
-                height: 22px;
-                line-height: 22px;
-                font-size: 11px;
-                color: #999;
-                -webkit-box-flex: 0;
-                flex: none;
-                text-align: right;
-                vertical-align: baseline;
-                .cmt-likearea{
-                  padding-left: 5px;
-                }
-              }
-            }
-          }
-          .cmt-content{
-            color: #333;
-            font-size: 15px;
-            line-height: 22px;
-            margin-top: 5px;
-            .cmt-text{
-              vertical-align: middle;
-            }
-          }
-        }
+        height: 100%;
       }
-    }
-  }
-  .comment-more{
-    margin-left: 50px;
-    position: relative;
-    .box{
-      display: block;
-      margin-right: 50px;
-      padding: 18px 0;
-      font-size: 14px;
-      color: #999;
-      text-align: center;
-      line-height: 1;
     }
   }
 }
