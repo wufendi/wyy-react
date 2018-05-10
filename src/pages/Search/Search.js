@@ -1,5 +1,6 @@
 // 搜索页面
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {topArtists, search, searchSuggest} from 'api/allApisList';
 import {setHistoryData} from 'actions/search';
@@ -136,7 +137,7 @@ export default class Search extends Component {
                                                 <img src={item.artist.img1v1Url} alt=""/>
                                                 <div>专辑：{item.name}<p className="desc">{item.artist.name}</p></div>
                                               <i className="iconfont icon-arrow-r"/>
-                                              <a href={`/album?id=${item.id}`} className="hidden-a"/>
+                                              <Link to={`/album?id=${item.id}`} className="hidden-a"/>
                                             </li>
                                         )
                                     }): ''
@@ -147,7 +148,7 @@ export default class Search extends Component {
                                             <li className="item img-item" key={i}>
                                                 <img src={item.img1v1Url} alt=""/>
                                                 <div>歌手：{item.name}  <i className="iconfont icon-arrow-r"/></div>
-                                                <a href={`/artist?id=${item.id}`} className="hidden-a"/>
+                                                <Link to={`/artist?id=${item.id}`} className="hidden-a"/>
                                             </li>
                                         )
                                     }): ''
@@ -159,7 +160,7 @@ export default class Search extends Component {
                                                 <img src={item.cover} alt=""/>
                                                 <div>MV：{item.name}<p className="desc">{item.artistName}</p></div>
                                                 <i className="iconfont icon-arrow-r"/>
-                                                <a href={`/mv?id=${item.id}`} className="hidden-a"/>
+                                                <Link to={`/mv?id=${item.id}`} className="hidden-a"/>
                                             </li>
                                         )
                                     }): ''
@@ -173,7 +174,7 @@ export default class Search extends Component {
                                                     {item.trackCount} 首 by ，播放{item.playCount}</p>
                                                 </div>
                                                 <i className="iconfont icon-arrow-r"/>
-                                                <a href={`/playlist?id=${item.id}`} className="hidden-a"/>
+                                                <Link to={`/playlist?id=${item.id}`} className="hidden-a"/>
                                             </li>
                                         )
                                     }): ''
@@ -206,7 +207,7 @@ export default class Search extends Component {
                                             </p>
                                             </div>
                                             <i className="iconfont icon-start"/>
-                                            <a href={`/song?id=${item.id}`} className="hidden-a"/>
+                                            <Link to={`/song?id=${item.id}`} className="hidden-a"/>
                                         </li>
                                     )
                                 }): ''}

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 import {getArtistsSong} from 'api/allApisList';
 import {getQueryString}  from 'utils/commonFn';
 import './style.scss';
@@ -80,7 +81,7 @@ export default class Artist extends Component {
                                             <i className="iconfont icon-start"/>
                                         </div>
                                     </div>
-                                    <a href={`/song?id=${item.id}`} className="hidden-a"/>
+                                    <Link to={`/song?id=${item.id}`} className="hidden-a"/>
                                 </li>
                             )
                         }):''

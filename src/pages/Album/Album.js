@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 import Comment from 'components/Comment/Comment';
 import {getAlbum, getCommentAlbum} from 'api/allApisList';
 import {getQueryString, timeFormat}  from 'utils/commonFn';
@@ -110,7 +111,7 @@ export default class Album extends Component {
                             <h2 className="fr-title">{albumName}</h2>
                             <div className="fr-singer">
                                 歌手：
-                                <span className="fr-singer-name"> <a href={`/artist?id=${singerId}`}>{singerName}</a></span>
+                                <span className="fr-singer-name"> <Link to={`/artist?id=${singerId}`}>{singerName}</Link></span>
                             </div>
                             <div className="fr-time">
                                 发行时间：<span>{publishTime}</span>
@@ -146,7 +147,7 @@ export default class Album extends Component {
                                             <i className="iconfont icon-start"/>
                                         </div>
                                     </div>
-                                    <a href={`/song?id=${item.id}`} className="hidden-a"/>
+                                    <Link to={`/song?id=${item.id}`} className="hidden-a"/>
                                 </li>
                             )
                         }):''

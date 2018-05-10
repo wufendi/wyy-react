@@ -19,7 +19,7 @@ export default class Nav extends Component {
                     {/*<li><Link to="/">首页</Link></li>*/}
                     {/*<li><Link to="/page1">Page1</Link></li>*/}
                     <li><NavLink to="/counter">Counter</NavLink></li>
-                    <li><NavLink to="/userinfo">UserInfo</NavLink></li>
+                    <li><NavLink to="/hotSongList">热歌榜</NavLink></li>
                     <li><NavLink to="/search">搜索</NavLink></li>
                 </ul>
             </header>

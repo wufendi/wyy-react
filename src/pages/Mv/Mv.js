@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 import Comment from 'components/Comment/Comment';
 import {getMvData, getMvUrl, getSimiMv, getCommentMv} from 'api/allApisList';
 import {getQueryString}  from 'utils/commonFn';
@@ -125,7 +126,7 @@ export default class Mv extends Component {
                                     歌手：{artists.length > 0 ? artists.map((item,index) => {
                                         const dot = index === artists.length - 1 ? '' : '/';
                                         return (
-                                            <a href={`/artist?id=${item.id}`} key={index}>{item.name} {dot} </a>
+                                            <Link to={`/artist?id=${item.id}`} key={index}>{item.name} {dot} </Link>
                                         )
                                 }) : '' }
                                 </p>
@@ -172,7 +173,7 @@ export default class Mv extends Component {
                                                             }
                                                         </p>
                                                     </article>
-                                                    <a href={`/mv?id=${item.id}`} className="hidden-a"/>
+                                                    <Link to={`/mv?id=${item.id}`} className="hidden-a"/>
                                                 </li>
                                             );
                                         })}

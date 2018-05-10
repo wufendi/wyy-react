@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 import {getPlaylistDetail,getCommentPlaylist} from 'api/allApisList';
 import {getQueryString}  from 'utils/commonFn';
 import './style.scss';
@@ -72,12 +73,12 @@ export default class Playlist extends Component {
                         <div className="fr">
                             <h2 className="fr-title f-brk">{name}</h2>
                             <div className="fr-user">
-                               <a href={`/user?id=${creator.userId}`}>
+                                <Link to={`/user?id=${creator.userId}`}>
                                    <span className="user-img">
                                        <img src={creator.avatarUrl} alt=""/>
                                    </span>
                                    {creator.nickname}
-                               </a>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -124,7 +125,7 @@ export default class Playlist extends Component {
                                             <i className="iconfont icon-start"/>
                                         </div>
                                     </div>
-                                    <a href={`/song?id=${item.id}`} className="hidden-a"/>
+                                    <Link to={`/song?id=${item.id}`} className="hidden-a"/>
                                 </li>
                             )
                         }):''
