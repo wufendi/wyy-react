@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import Nav from 'components/Nav/Nav';
 import {getPersonalized, getPersonalizedNewSong, getPersonalizedDjProgram, getPersonalizedMv, getRecommend } from 'api/allApisList';
 import "./style.scss";
 
@@ -85,6 +86,7 @@ export default class Recommend extends Component {
         const {playlistData, newSongData, djProgramData, mvListData, programData} = this.state;
         return (
             <div className="page recommend">
+                <Nav/>
                 {
                     playlistData.length ? (
                         <div>

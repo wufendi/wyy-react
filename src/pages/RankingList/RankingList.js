@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import Nav from 'components/Nav/Nav';
 import surgeImg from './imgs/bsb.jpg'; // 飙升榜
 import newSongImg from './imgs/xgb.jpg'; // 新歌榜
 import originalImg from './imgs/ycb.jpg'; // 原创榜
@@ -59,6 +60,7 @@ export default class RankingList extends Component {
     render() {
         return (
             <div className="page hot-song-page">
+                <Nav/>
                 <h2 className="title">官方榜</h2>
                 <ul>
                     {

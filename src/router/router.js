@@ -37,7 +37,8 @@ const createComponent = (component) => (props) => (
 const getRouter = () => (
 
             <Switch>
-                <Route exact path="/" component={createComponent(Home)}/>
+                <Route exact path="/" component={createComponent(Recommend)}/>
+                <Route exact path="/home" component={createComponent(Home)}/>
                 <Route exact path="/page1" component={createComponent(Page1)}/>
                 <Route exact path="/counter" component={createComponent(Counter)}/>
                 <Route exact path="/userinfo" component={createComponent(UserInfo)}/>

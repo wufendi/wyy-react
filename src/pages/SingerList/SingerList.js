@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import Nav from 'components/Nav/Nav';
 import './style.scss';
 const singType = [
     {
@@ -49,8 +50,9 @@ export default class SingerList extends Component {
     render() {
         return (
             <div className="page singer-list">
+                <Nav/>
                 <h4>推荐</h4>
-                <ul>
+                <ul className="list">
                     <li>推荐歌手
                         <i className="iconfont icon-arrow-r"/>
                         <Link to={`/singerDetail?type=5002`} className="hidden-a"/>
@@ -65,7 +67,7 @@ export default class SingerList extends Component {
                         return (
                             <div key={index}>
                                 <h4>{item.name}</h4>
-                                <ul>
+                                <ul className="list">
                                     <li>
                                         {`${item.name}男歌手`}
                                         <i className="iconfont icon-arrow-r"/>

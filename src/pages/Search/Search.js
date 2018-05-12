@@ -2,6 +2,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
+import Nav from 'components/Nav/Nav';
 import {topArtists, search, searchSuggest} from 'api/allApisList';
 import {setHistoryData} from 'actions/search';
 import './style.scss';
@@ -264,7 +265,8 @@ export default class Search extends Component {
         }
         return (
             <div className="page search">
-                <div className="header">
+                <Nav/>
+                <div className="search-header">
                     <i className="iconfont icon-search"/>
                     <input type="text" placeholder="搜索歌曲、歌手、专辑" onChange={this.doSearch} value={searchKeyword} />
                     {searchKeyword ? <i className="iconfont icon-cancel" onClick={this.doCancel}/> : ''}

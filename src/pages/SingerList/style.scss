@@ -2,11 +2,12 @@
 .page.singer-list{
   overflow-y: auto;
   background: #fff;
-  padding-top: 10px;
+  padding-top: 114px;
+  position: relative;
   h4{
     margin:0 10px;
   }
-  ul{
+  ul.list{
     background: #fff;
     padding: 10px;
     li{
