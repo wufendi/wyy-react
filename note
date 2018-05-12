@@ -1,0 +1,12 @@
+pages
+  -- Search  搜索 *
+  -- Album   专辑 *
+  -- Artist  歌手 *
+  -- Mv      MV *
+  -- Playlist 歌单 *
+  -- Song    播放 *
+  -- RankingList 排行榜 *
+  -- RankingListDetail 排行榜详情 *
+  -- SingerRankingList 歌手榜 *
+  -- SingerList 歌手分类列表 *
+  -- SingerDetail 歌手分类列表详情 *
