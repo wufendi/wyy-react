@@ -1,10 +1,7 @@
 @import "styles/varible.scss";
 .page.search{
   padding-top: 104px;
-  .iconfont{
-    font-size: 22px;
-    color:rgba(0,0,0,.1);
-  }
+
   .search-header{
     padding: 15px 10px;
     border-bottom: 1px solid $border_color;
@@ -33,6 +30,10 @@
   .content{
     height: calc(100% - 60px);
     overflow: hidden;
+    .iconfont{
+      font-size: 22px;
+      color:rgba(0,0,0,.1);
+    }
     section{
       height: 100%;
       overflow-y: auto;
