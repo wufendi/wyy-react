@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import Header from 'components/Header/Header';
 import {getQueryString,monthDayFormat}  from 'utils/commonFn';
 import {getTopList} from 'api/allApisList';
 import './detail.scss';
@@ -143,6 +144,7 @@ export default class RankingListDetail extends Component {
         const {commentCount, shareCount, name, trackCount, updateTime, subscribedCount, coverImgUrl, tracks, playCount, creator} = this.state;
         return (
             <div className="page ranking-detail">
+                <Header title={name}/>
                 {
                     this.idx ? (
                         <div>

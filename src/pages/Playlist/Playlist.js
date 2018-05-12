@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import Header from 'components/Header/Header';
 import {getPlaylistDetail,getCommentPlaylist} from 'api/allApisList';
 import {getQueryString}  from 'utils/commonFn';
 import './style.scss';
@@ -57,6 +58,7 @@ export default class Playlist extends Component {
         const tags = this.state.tags;
         return (
             <div className="page playlist">
+                <Header title={name}/>
                 <section className="top">
                     <div className="bg" style={{backgroundImage:`url(${coverImgUrl})`}}/>
                     <div className="wrap">

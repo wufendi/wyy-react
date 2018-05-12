@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import Header from 'components/Header/Header';
 import Comment from 'components/Comment/Comment';
 import {getMvData, getMvUrl, getSimiMv, getCommentMv} from 'api/allApisList';
 import {getQueryString}  from 'utils/commonFn';
@@ -104,6 +105,7 @@ export default class Mv extends Component {
         }
         return (
             <div className="page mv">
+                <Header title="MV"/>
                 {
                     mvData ? (<div>
                         <div className="top">

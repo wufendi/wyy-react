@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import Header from 'components/Header/Header';
 import {getArtistsSong} from 'api/allApisList';
 import {getQueryString}  from 'utils/commonFn';
 import './style.scss';
@@ -49,6 +50,7 @@ export default class Artist extends Component {
         const hotSongs = this.state.hotSongs;
         return (
             <div className="page artist">
+                <Header title={singerName}/>
                 <section className="top">
                     <img className="bg" src={picUrl}/>
                     <p className="singer-name">{singerName}</p>

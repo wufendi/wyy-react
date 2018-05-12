@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import Header from 'components/Header/Header';
 import {getTopListArtist} from 'api/allApisList';
 import {monthDayFormat}  from 'utils/commonFn';
 import './singerRankingList.scss';
@@ -41,6 +42,7 @@ export default class SingerRankingList extends Component {
         }
         return (
             <div className="page singer-ranking-list">
+                <Header title="歌手排行榜"/>
             {
                 artists.length?(
                     <div>

@@ -1,5 +1,6 @@
 // 具体歌曲页面
 import React, {Component} from 'react';
+import Header from 'components/Header/Header';
 import {musicUrl,songDetail} from 'api/allApisList';
 import {getQueryString}  from 'utils/commonFn';
 import './style.scss';
@@ -51,6 +52,7 @@ export default class Song extends Component {
 
         return (
             <div className='page song'>
+                <Header title="歌曲详情面"/>
                 <div className="background-img" style={{backgroundImage:`url(${backgroundImg})`}}>
                   <div className="content">
                       <div className="img-content">

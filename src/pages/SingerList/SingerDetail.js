@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import Header from 'components/Header/Header';
 import {getQueryString}  from 'utils/commonFn';
 import {getArtistList} from 'api/allApisList';
 import './singerDetail.scss';
@@ -42,6 +43,7 @@ export default class SingerDetail extends Component {
         const {artists, more} = this.state;
         return (
             <div className="page singer-detail">
+                <Header title="歌手"/>
                 {
                     artists.length ? (<ul>
                         {artists.map((item,index) => {

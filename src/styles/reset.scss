@@ -74,3 +74,25 @@ li{list-style:none}
 img{border:0;vertical-align:middle}
 table{border-collapse:collapse;border-spacing:0}
 p{word-wrap:break-word}
+.back-header{ // 返回时的按钮
+  height: 36px;
+  line-height: 36px;
+  padding: 0 10px;
+  background: $main_color;
+  color:#fff;
+  font-size: 16px;
+  text-align: center;
+  position: relative;
+  .iconfont{
+    padding:0 10px;
+  }
+  .icon-arrow-l{
+    position: absolute;
+    left: 10px;
+  }
+  .home{
+    position: absolute;
+    right:10px;
+    color:#fff;
+  }
+}

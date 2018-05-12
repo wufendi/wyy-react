@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import Header from 'components/Header/Header';
 import Comment from 'components/Comment/Comment';
 import {getAlbum, getCommentAlbum} from 'api/allApisList';
 import {getQueryString, timeFormat}  from 'utils/commonFn';
@@ -99,6 +100,7 @@ export default class Album extends Component {
         const commentMore = this.state.commentMore;
         return (
             <div className="page album">
+                <Header title={singerName}/>
                 <section className="top">
                     <div className="bg" style={{backgroundImage:`url(${blurPicUrl})`}}/>
                     <div className="wrap">
