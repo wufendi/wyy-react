@@ -12,7 +12,7 @@ export default class Header extends Component {
         return (
             <div className="back-header">
                 <i className="iconfont icon-arrow-l" onClick={this.handleBack}/>
-                {title}
+                <span>{title}</span>
                 <Link to="/" className="home">
                     <i className="iconfont icon-menu"/>
                 </Link>

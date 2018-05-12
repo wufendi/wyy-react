@@ -147,7 +147,7 @@ export default class RankingListDetail extends Component {
                 <Header title={name}/>
                 {
                     this.idx ? (
-                        <div>
+                        <div className="ranking-detail-content">
                             <div className="top" style={{backgroundColor:getBackgroundColor(this.idx),color:(this.idx ===  '18' || this.idx ===  '19' )? 'black': ''}}>
                                 <div className="wrap">
                                     <div className="fl">
