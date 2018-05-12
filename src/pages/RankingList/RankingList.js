@@ -4,6 +4,7 @@ import surgeImg from './imgs/bsb.jpg'; // 飙升榜
 import newSongImg from './imgs/xgb.jpg'; // 新歌榜
 import originalImg from './imgs/ycb.jpg'; // 原创榜
 import hotSongImg from './imgs/rgb.jpg'; // 热歌榜
+import singerRank from './imgs/singerRank.jpg'; // 歌手榜
 import electronicSongImg from './imgs/dyb.jpg'; // 电音
 import hipHopImg from './imgs/hiphop.jpg'; // 嘻哈
 import acgImg from './imgs/acg.jpg'; // ACG音乐
@@ -30,7 +31,7 @@ const officialList = [
     { img: newSongImg, name: '新歌榜', refreshTime: '每天更新',idx:0},
     { img: originalImg, name: '原创榜', refreshTime: '刚刚更新',idx: 2},
     { img: hotSongImg, name: '热歌榜', refreshTime: '刚刚更新',idx: 1},
-  //  { img: hotSongImg, name: '歌手榜', refreshTime: '每天更新', isSing: true}
+    { img: singerRank, name: '歌手榜', refreshTime: '每天更新', isSing: true}
 ];
 const globalList = [
     { img: electronicSongImg, name: '电音榜', refreshTime: '每周五更新',idx: 12},
@@ -71,10 +72,10 @@ export default class RankingList extends Component {
                                     <div className="des">
                                         {item.name}
                                     </div>
-                                    <Link to={`/rankingListDetail?idx=${item.idx}`} className="hidden-a"/>
-                                    {/*{*/}
-                                        {/*item.isSing ? (<Link to={`/singerList`} className="hidden-a"/>):(<Link to={`/rankingListDetail?idx=${item.idx}`} className="hidden-a"/>)*/}
-                                    {/*}*/}
+                                    {/*<Link to={`/rankingListDetail?idx=${item.idx}`} className="hidden-a"/>*/}
+                                    {
+                                        item.isSing ? (<Link to={`/singerRankingList`} className="hidden-a"/>):(<Link to={`/rankingListDetail?idx=${item.idx}`} className="hidden-a"/>)
+                                    }
 
                                 </li>
                             )

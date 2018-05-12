@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'iconfont';  /* project id 647219 */
-  src: url('//at.alicdn.com/t/font_647219_u2mh638xhbinewmi.eot');
-  src: url('//at.alicdn.com/t/font_647219_u2mh638xhbinewmi.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_647219_u2mh638xhbinewmi.woff') format('woff'),
-  url('//at.alicdn.com/t/font_647219_u2mh638xhbinewmi.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_647219_u2mh638xhbinewmi.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_647219_c6t3p650busj1yvi.eot');
+  src: url('//at.alicdn.com/t/font_647219_c6t3p650busj1yvi.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_647219_c6t3p650busj1yvi.woff') format('woff'),
+  url('//at.alicdn.com/t/font_647219_c6t3p650busj1yvi.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_647219_c6t3p650busj1yvi.svg#iconfont') format('svg');
 }
 .iconfont{
   font-family:"iconfont" !important;
@@ -29,6 +29,8 @@
 }
 
 $iconfont: (
+        flat: '\e64e',
+        hot: '\e604',
         user: '\e603',
         headerset: '\e630',
         vadio: '\e612',
@@ -48,6 +50,8 @@ $iconfont: (
         share: '\e648',
         arrow-dr: '\e765',
         arrow-dl: '\e602',
+        arrow-dt:'\e6cb',
+        arrow-db:'\e606',
         arrow-r: '\e64a',
         arrow-l: '\e6a5',
         arrow-t: '\e62d',

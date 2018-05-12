@@ -52,9 +52,11 @@ export default class SingerList extends Component {
                 <h4>推荐</h4>
                 <ul>
                     <li>推荐歌手
+                        <i className="iconfont icon-arrow-r"/>
                         <Link to={`/singerDetail?type=5002`} className="hidden-a"/>
                     </li>
                     <li>入驻歌手
+                        <i className="iconfont icon-arrow-r"/>
                         <Link to={`/singerDetail?type=5001`} className="hidden-a"/>
                     </li>
                 </ul>
@@ -66,14 +68,17 @@ export default class SingerList extends Component {
                                 <ul>
                                     <li>
                                         {`${item.name}男歌手`}
+                                        <i className="iconfont icon-arrow-r"/>
                                         <Link to={`/singerDetail?type=${item.type.gentle}`} className="hidden-a"/>
                                     </li>
                                     <li>
                                         {`${item.name}女歌手`}
+                                        <i className="iconfont icon-arrow-r"/>
                                         <Link to={`/singerDetail?type=${item.type.lady}`} className="hidden-a"/>
                                     </li>
                                     <li>
                                         {`${item.name}组合/乐队`}
+                                        <i className="iconfont icon-arrow-r"/>
                                         <Link to={`/singerDetail?type=${item.type.band}`} className="hidden-a"/>
                                     </li>
                                 </ul>

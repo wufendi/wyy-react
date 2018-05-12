@@ -238,6 +238,17 @@ export function getTopList(idx=1) {
     })
 }
 
+// 歌手榜
+/*
+* 说明 : 调用此接口 , 可获取 PC 版排行榜中的歌手榜
+* */
+export function getTopListArtist() {
+    return fetch({
+        url: `${pref}/toplist/artist`,
+        method: 'get'
+    })
+}
+
 // 歌手分类列表
 /*
 * @param cat: 必选参数  即 category Code,歌手类型

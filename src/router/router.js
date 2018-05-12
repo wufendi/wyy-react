@@ -16,8 +16,10 @@ import User from 'bundle-loader?lazy&name=user!pages/User/User';
 import Playlist from "bundle-loader?lazy&name=playlist!pages/Playlist/Playlist";
 import RankingList from "bundle-loader?lazy&name=rankingList!pages/RankingList/RankingList";
 import RankingListDetail from "bundle-loader?lazy&name=rankingListDetail!pages/RankingList/RankingListDetail";
+import SingerRankingList from "bundle-loader?lazy&name=singerRankingListDetail!pages/RankingList/SingerRankingList";
 import SingerList from "bundle-loader?lazy&name=singerList!pages/SingerList/SingerList"
 import SingerDetail from "bundle-loader?lazy&name=singerDetail!pages/SingerList/SingerDetail";
+
 
 const Loading = function () {
     return <div>Loading...</div>
@@ -47,6 +49,7 @@ const getRouter = () => (
                 <Route exact path="/playlist" component={createComponent(Playlist)}/>
                 <Route exact path="/rankingList" component={createComponent(RankingList)}/>
                 <Route exact path="/rankingListDetail" component={createComponent(RankingListDetail)}/>
+                <Route exact path="/singerRankingList" component={createComponent(SingerRankingList)}/>
                 <Route exact path="/singerList" component={createComponent(SingerList)}/>
                 <Route exact path="/singerDetail" component={createComponent(SingerDetail)}/>
             </Switch>
