@@ -278,3 +278,45 @@ export function getArtistList(cat,offset = 0,limit = 30) {
         method: 'get'
     })
 }
+
+// 推荐
+// 推荐歌单
+// 说明 : 调用此接口 , 可获取推荐歌单
+export function getPersonalized() {
+    return fetch({
+        url: `${pref}/personalized`,
+        method: 'get'
+    })
+}
+// 推荐新音乐
+// 说明 : 调用此接口 , 可获取推荐新音乐
+export function getPersonalizedNewSong() {
+    return fetch({
+        url: `${pref}/personalized/newsong`,
+        method: 'get'
+    })
+}
+// 推荐电台
+// 说明 : 调用此接口 , 可获取推荐电台
+export function getPersonalizedDjProgram() {
+    return fetch({
+        url: `${pref}/personalized/djprogram`,
+        method: 'get'
+    })
+}
+// 推荐 mv
+// 说明 : 调用此接口 , 可获取推荐mv
+export function getPersonalizedMv() {
+    return fetch({
+        url: `${pref}/personalized/mv`,
+        method: 'get'
+    })
+}
+// 推荐节目
+// 说明 : 调用此接口 , 可获取推荐电台
+export function getRecommend() {
+    return fetch({
+        url: `${pref}/program/recommend`,
+        method: 'get'
+    })
+}

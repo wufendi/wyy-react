@@ -8,5 +8,7 @@ pages
   -- RankingList 排行榜 *
   -- RankingListDetail 排行榜详情 *
   -- SingerRankingList 歌手榜 *
+  -- MvRankingList MV排行榜
   -- SingerList 歌手分类列表 *
   -- SingerDetail 歌手分类列表详情 *
+  -- Recommend 推荐

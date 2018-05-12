@@ -19,6 +19,7 @@ import RankingListDetail from "bundle-loader?lazy&name=rankingListDetail!pages/R
 import SingerRankingList from "bundle-loader?lazy&name=singerRankingListDetail!pages/RankingList/SingerRankingList";
 import SingerList from "bundle-loader?lazy&name=singerList!pages/SingerList/SingerList"
 import SingerDetail from "bundle-loader?lazy&name=singerDetail!pages/SingerList/SingerDetail";
+import Recommend from "bundle-loader?lazy&name=recommend!pages/Recommend/Recommend";
 
 
 const Loading = function () {
@@ -52,6 +53,7 @@ const getRouter = () => (
                 <Route exact path="/singerRankingList" component={createComponent(SingerRankingList)}/>
                 <Route exact path="/singerList" component={createComponent(SingerList)}/>
                 <Route exact path="/singerDetail" component={createComponent(SingerDetail)}/>
+                <Route exact path="/recommend" component={createComponent(Recommend)}/>
             </Switch>
 );
 
