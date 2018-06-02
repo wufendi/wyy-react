@@ -57,7 +57,7 @@ export default class Song extends Component {
                   <div className="content">
                       <div className="img-content">
                           <img src={needle} className="needle-img" alt="needle"/>
-                          <img src={defaultImg} className="song-img" alt=""/>
+                          <img src={backgroundImg} className="song-img" alt=""/>
                           <img src={disc} className="disc-img" alt="disc"/>
                       </div>
 

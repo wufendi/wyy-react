@@ -100,7 +100,7 @@ export default class Mv extends Component {
         let videoUrl = '';
         let artists = [];
         if (mvData) {
-            videoUrl = mvData.brs['240'];
+            videoUrl = 'http://192.168.1.226:3000/mv/url?url=' + mvData.brs['240'];
             artists = mvData.artists;
         }
         return (

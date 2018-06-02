@@ -27,7 +27,7 @@ export default class Playlist extends Component {
             getPlaylistDetail(this.id).then(response => {
                 const resultData = response.data;
                 if (resultData.code === 200) {
-                    const data = resultData.result
+                    const data = resultData.playlist
                     this.setState(...this.state,{
                         coverImgUrl: data.coverImgUrl,
                         name:data.name,
@@ -115,12 +115,12 @@ export default class Playlist extends Component {
                                         <div className="fl">
                                             <div className="song-name">{item.name}</div>
                                             <div className="song-info">
-                                                {item.artists.length ? item.artists.map((subItem,subIndex)=>{
-                                                    const dot = subIndex === item.artists.length - 1 ? '' : '/'
+                                                {item.ar.length ? item.ar.map((subItem,subIndex)=>{
+                                                    const dot = subIndex === item.ar.length - 1 ? '' : '/'
                                                     return (
                                                         <span key={subIndex}>{subItem.name} {dot} </span>
                                                     )
-                                                }): '' } - {item.album.name}
+                                                }): '' } - {item.al.name}
                                             </div>
                                         </div>
                                         <div className="fr">
